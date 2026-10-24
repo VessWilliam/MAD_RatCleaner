@@ -1,6 +1,7 @@
 use ratatui::widgets::ListState;
 use std::collections::HashMap;
 
+use crate::core::runtime::run;
 use crate::core::screen::Screen;
 use crate::core::trigger::Trigger;
 use crate::states::{AppState, SCAN_LIST};
@@ -55,6 +56,6 @@ impl App {
     }
 
     pub fn run(mut self) -> anyhow::Result<()> {
-        crate::core::runtime::run(&mut self)
+        run(&mut self)
     }
 }
