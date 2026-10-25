@@ -1,5 +1,5 @@
 use super::{footer, header, screens};
-use crate::App;
+use crate::core::App;
 use ratatui::{
     Frame,
     layout::{Constraint, Layout},

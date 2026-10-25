@@ -2,9 +2,7 @@ use std::time::Duration;
 
 use crate::core::action::Action;
 use crate::core::app::App;
-use crate::core::event::poll_action;
-use crate::core::screen::Screen;
-use crate::core::trigger::Trigger;
+use crate::core::{Screen, Trigger, poll_action};
 
 pub fn run(app: &mut App) -> anyhow::Result<()> {
     app.run_trigger(Trigger::Startup);

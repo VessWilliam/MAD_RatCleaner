@@ -1,12 +1,15 @@
-pub mod terminal;
 use crate::core::App;
 use crate::states::TERMINAL;
-use crate::terminal::terminal::Terminal;
 use crate::traits::{Plugin, StateStore, TerminalExt};
 use std::cell::RefCell;
 use std::process::exit;
 use std::rc::Rc;
 
+// 1. Declare the struct file
+pub mod terminal;
+use terminal::Terminal;
+
+// 2. Define the Plugin right here!
 pub struct TerminalPlugin;
 
 impl Plugin for TerminalPlugin {
@@ -18,7 +21,7 @@ impl Plugin for TerminalPlugin {
                 app.state.register(TERMINAL, boxed);
             }
             Err(e) => {
-                eprint!("failed to init terminal: {e}");
+                eprintln!("failed to init terminal: {e}");
                 exit(1);
             }
         }

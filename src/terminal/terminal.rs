@@ -1,5 +1,4 @@
-use std::io::Result;
-use std::io::{Stdout, stdout};
+use std::io::{Result, Stdout, stdout};
 
 use crossterm::terminal::EnterAlternateScreen;
 use crossterm::terminal::LeaveAlternateScreen;

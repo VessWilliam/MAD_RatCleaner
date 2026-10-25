@@ -1,17 +1,19 @@
-pub mod footer;
-pub mod header;
-pub mod main;
-pub mod screens;
-
 use std::rc::Rc;
 
 use crate::{
     core::{App, Trigger},
     states::TERMINAL,
     traits::{Plugin, StateStore},
-    ui::main::draw,
+    ui::layout::draw,
 };
 
+// 1. Declare the struct file
+pub mod footer;
+pub mod header;
+pub mod layout;
+pub mod screens;
+
+// 2. Define the Plugin right here!
 pub struct UiPlugin;
 
 impl Plugin for UiPlugin {

@@ -1,12 +1,11 @@
 use ratatui::widgets::ListState;
 use std::collections::HashMap;
 
-use crate::core::runtime::run;
-use crate::core::screen::Screen;
-use crate::core::trigger::Trigger;
+use crate::core::{Screen, Trigger, run};
 use crate::states::{AppState, SCAN_LIST};
 use crate::traits::{PluginGroup, StateStore};
 
+// Every system is just a function that takes &mut App
 type SystemFn = Box<dyn Fn(&mut App)>;
 
 pub struct App {
@@ -36,6 +35,7 @@ impl App {
         self
     }
 
+    // Register a system to run when a specific trigger fires
     pub fn add_system<F>(&mut self, trigger: Trigger, system: F) -> &mut Self
     where
         F: Fn(&mut App) + 'static,
@@ -47,6 +47,7 @@ impl App {
         self
     }
 
+    // Fire a trigger and run all systems registered to it
     pub fn run_trigger(&mut self, trigger: Trigger) {
         let systems = self.systems.remove(&trigger).unwrap_or_default();
         for system in &systems {
@@ -55,6 +56,7 @@ impl App {
         self.systems.insert(trigger, systems);
     }
 
+    // Terminal loop
     pub fn run(mut self) -> anyhow::Result<()> {
         run(&mut self)
     }

@@ -1,4 +1,4 @@
-use crate::core::action::Action;
+use crate::core::Action;
 use crate::core::screen::Screen;
 use crossterm::event::{self, Event, KeyCode, KeyEventKind};
 use std::io;
